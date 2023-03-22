@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Student>
+<br />
+@using (Html.BeginForm("Search", "Students", FormMethod.Get))
+{
+    <input type="text" name="searchTerm" style="height:35px;width:200px" placeholder="Search ....." />
+    <button type="submit">Search</button>
+}
+<br />
+<br />
+@if (Model != null)
+{
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Student Name</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var student in Model)
+            {
+                <tr>
+                    <td>@student.StudentName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
